@@ -20,6 +20,7 @@ export default [
   {
     rules: {
       "react/react-in-jsx-scope": "off", // Desactiva la regla react-in-jsx-scope
+      "@typescript-eslint/explicit-function-return-type": "error", // Habilita la regla para exigir tipos de retorno explícitos
     },
   },
 ];
