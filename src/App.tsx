@@ -64,6 +64,20 @@ const App = (): JSX.Element => {
     setTodos(newTodos)
   }
 
+  const handleUpdateTitle = ({id, title}: {id: TodoType['id'], title: TodoType['title']}): void => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          title
+        };
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+  
+
   const filteredTodos = todos.filter(todo => {
     if (filterSelected === TODO_FILTERS.ACTIVE) return !todo.completed
     if (filterSelected === TODO_FILTERS.COMPLETED) return todo.completed
@@ -78,7 +92,8 @@ const App = (): JSX.Element => {
       <Todos 
         todos={filteredTodos} 
         onRemoveTodo={handleRemove} 
-        onToggleCompleteTodo={handleCompleted}  
+        onToggleCompleteTodo={handleCompleted}
+        onUpdateTitle={handleUpdateTitle} 
       />
       <Footer
         activeCount={activeCount}
